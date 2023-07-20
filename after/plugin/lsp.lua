@@ -36,4 +36,8 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", vim.lsp.buf.signature_help, opts)
 end)
 
+-- lsp.skip_server_setup({'clangd'})
+
 lsp.setup()
+
+-- require('clangd_extensions').setup()
