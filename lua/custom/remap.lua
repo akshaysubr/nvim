@@ -29,3 +29,20 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
+
+local n_opts = {silent = true, noremap = true}
+local t_opts = {silent = true}
+
+-- Better window navigation
+vim.keymap.set('n', '<C-h>', '<C-w>h', n_opts)
+vim.keymap.set('n', '<C-j>', '<C-w>j', n_opts)
+vim.keymap.set('n', '<C-k>', '<C-w>k', n_opts)
+vim.keymap.set('n', '<C-l>', '<C-w>l', n_opts)
+
+-- Terminal mode
+vim.keymap.set('t', '<esc>', '<C-\\><C-N>', t_opts)
+vim.keymap.set('t', '<C-h>', '<C-\\><C-N><C-w>h', t_opts)
+vim.keymap.set('t', '<C-j>', '<C-\\><C-N><C-w>j', t_opts)
+vim.keymap.set('t', '<C-k>', '<C-\\><C-N><C-w>k', t_opts)
+vim.keymap.set('t', '<C-l>', '<C-\\><C-N><C-w>l', t_opts)

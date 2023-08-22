@@ -73,7 +73,7 @@ return require('packer').startup(function(use)
         -- tag = "*"
     }
 
-    use { 'akinsho/git-conflict.nvim', tag = "v1.0.0", config = function()
+    use { 'akinsho/git-conflict.nvim', tag = "v1.1.0", config = function()
         require('git-conflict').setup({
             default_mappings = true, -- disable buffer local mapping created by this plugin
             default_commands = true, -- disable commands created by this plugin
@@ -85,4 +85,12 @@ return require('packer').startup(function(use)
             }
         })
     end }
+
+    use {
+        'chipsenkbeil/distant.nvim',
+        branch = 'v0.3',
+        config = function()
+            require('distant'):setup()
+        end
+    }
 end)
