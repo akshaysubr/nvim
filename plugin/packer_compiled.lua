@@ -79,6 +79,11 @@ _G.packer_plugins = {
     path = "/home/akshays/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
+  ["clangd_extensions.nvim"] = {
+    loaded = true,
+    path = "/home/akshays/.local/share/nvim/site/pack/packer/start/clangd_extensions.nvim",
+    url = "https://github.com/p00f/clangd_extensions.nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/akshays/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -104,10 +109,22 @@ _G.packer_plugins = {
     path = "/home/akshays/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["distant.nvim"] = {
+    config = { "\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0B\0\2\1K\0\1\0\nsetup\fdistant\frequire\0" },
+    loaded = true,
+    path = "/home/akshays/.local/share/nvim/site/pack/packer/start/distant.nvim",
+    url = "https://github.com/chipsenkbeil/distant.nvim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/home/akshays/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
+  },
+  ["git-conflict.nvim"] = {
+    config = { "\27LJ\2\n²\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15highlights\1\0\2\rincoming\rDiffText\fcurrent\fDiffAdd\1\0\3\21default_mappings\2\21default_commands\2\24disable_diagnostics\1\nsetup\17git-conflict\frequire\0" },
+    loaded = true,
+    path = "/home/akshays/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
+    url = "https://github.com/akinsho/git-conflict.nvim"
   },
   harpoon = {
     loaded = true,
@@ -210,14 +227,22 @@ _G.packer_plugins = {
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: neogen
-time([[Config for neogen]], true)
-try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
-time([[Config for neogen]], false)
+-- Config for: distant.nvim
+time([[Config for distant.nvim]], true)
+try_loadstring("\27LJ\2\n9\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\2\18\2\0\0009\0\2\0B\0\2\1K\0\1\0\nsetup\fdistant\frequire\0", "config", "distant.nvim")
+time([[Config for distant.nvim]], false)
 -- Config for: nightfox
 time([[Config for nightfox]], true)
 try_loadstring("\27LJ\2\n7\0\0\3\0\3\0\0056\0\0\0009\0\1\0'\2\2\0B\0\2\1K\0\1\0\24colorscheme nordfox\bcmd\bvim\0", "config", "nightfox")
 time([[Config for nightfox]], false)
+-- Config for: neogen
+time([[Config for neogen]], true)
+try_loadstring("\27LJ\2\n8\0\0\3\0\3\0\a6\0\0\0'\2\1\0B\0\2\0029\0\2\0004\2\0\0B\0\2\1K\0\1\0\nsetup\vneogen\frequire\0", "config", "neogen")
+time([[Config for neogen]], false)
+-- Config for: git-conflict.nvim
+time([[Config for git-conflict.nvim]], true)
+try_loadstring("\27LJ\2\n²\1\0\0\4\0\6\0\t6\0\0\0'\2\1\0B\0\2\0029\0\2\0005\2\3\0005\3\4\0=\3\5\2B\0\2\1K\0\1\0\15highlights\1\0\2\rincoming\rDiffText\fcurrent\fDiffAdd\1\0\3\21default_mappings\2\21default_commands\2\24disable_diagnostics\1\nsetup\17git-conflict\frequire\0", "config", "git-conflict.nvim")
+time([[Config for git-conflict.nvim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
