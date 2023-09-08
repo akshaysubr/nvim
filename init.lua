@@ -1,1 +1,2 @@
+require("packer")
 require("custom")
