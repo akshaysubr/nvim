@@ -105,13 +105,13 @@ return packer.startup(function(use)
         })
     end }
 
-    use {
-        'chipsenkbeil/distant.nvim',
-        branch = 'v0.3',
-        config = function()
-            require('distant'):setup()
-        end
-    }
+    -- use {
+    --     'chipsenkbeil/distant.nvim',
+    --     branch = 'v0.3',
+    --     config = function()
+    --         require('distant'):setup()
+    --     end
+    -- }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
