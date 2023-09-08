@@ -1,5 +1,7 @@
 local custom_theme = require'lualine.themes.base16'
 
-require('lualine').setup {
-    options = { theme  = custom_theme },
-}
+if custom_theme then
+    require('lualine').setup {
+        options = { theme  = custom_theme },
+    }
+end
