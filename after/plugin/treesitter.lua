@@ -1,4 +1,4 @@
-local configs = require'nvim-treesitter.configs'
+local configs = pcall(require, 'nvim-treesitter.configs')
 
 if configs then
     configs.setup {

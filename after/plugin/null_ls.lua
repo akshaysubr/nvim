@@ -1,4 +1,4 @@
-local null_ls = require("null-ls")
+local null_ls = pcall(require, "null-ls")
 
 if null_ls then
     null_ls.setup({

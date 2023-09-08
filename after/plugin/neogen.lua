@@ -1,4 +1,4 @@
-local neogen = require('neogen')
+local neogen = pcall(require, 'neogen')
 
 if neogen then
     neogen.setup {

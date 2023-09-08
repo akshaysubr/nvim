@@ -1,4 +1,4 @@
-local indent = require("indent_blankline")
+local indent = pcall(require, "indent_blankline")
 
 if indent then
     indent.setup {
