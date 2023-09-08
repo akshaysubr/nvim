@@ -1,2 +1,1 @@
-require("packer")
 require("custom")
