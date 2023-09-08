@@ -1,6 +1,6 @@
-local null_ls = pcall(require, "null-ls")
+local ok, null_ls = pcall(require, "null-ls")
 
-if null_ls then
+if ok then
     null_ls.setup({
         sources = {
             null_ls.builtins.formatting.black.with({ extra_args = { "--fast" } }),

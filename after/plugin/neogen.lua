@@ -1,6 +1,6 @@
-local neogen = pcall(require, 'neogen')
+local ok, neogen = pcall(require, 'neogen')
 
-if neogen then
+if ok then
     neogen.setup {
         enabled = true, --if you want to disable Neogen
         input_after_comment = true, -- (default: true) automatic jump (with insert mode) on inserted annotation

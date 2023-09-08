@@ -1,6 +1,6 @@
-local builtin = pcall(require, 'telescope.builtin')
+local ok, builtin = pcall(require, 'telescope.builtin')
 
-if builtin then
+if ok then
     vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
     vim.keymap.set('n', '<C-p>', builtin.git_files, {})
     vim.keymap.set('n', '<leader>fs', function()

@@ -1,6 +1,6 @@
-local lsp = pcall(require, 'lsp-zero')
+local ok, lsp = pcall(require, 'lsp-zero')
 
-if lsp then
+if ok then
     lsp.preset('recommended')
 
     lsp.ensure_installed({

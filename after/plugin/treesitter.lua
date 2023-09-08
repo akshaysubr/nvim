@@ -1,6 +1,6 @@
-local configs = pcall(require, 'nvim-treesitter.configs')
+local ok, configs = pcall(require, 'nvim-treesitter.configs')
 
-if configs then
+if ok then
     configs.setup {
       -- A list of parser names, or "all"
       ensure_installed = { "c", "cpp", "cuda", "dockerfile", "lua", "python", "rust" },

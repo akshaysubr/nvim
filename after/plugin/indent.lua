@@ -1,6 +1,6 @@
-local indent = pcall(require, "indent_blankline")
+local ok, indent = pcall(require, "indent_blankline")
 
-if indent then
+if ok then
     indent.setup {
         -- for example, context is off by default, use this to turn it on
         show_current_context = true,
