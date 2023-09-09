@@ -1,5 +1,7 @@
-local custom_theme = require'lualine.themes.base16'
+local ok, custom_theme = pcall(require, 'lualine.themes.base16')
 
-require('lualine').setup {
-    options = { theme  = custom_theme },
-}
+if ok then
+    require('lualine').setup {
+        options = { theme  = custom_theme },
+    }
+end
