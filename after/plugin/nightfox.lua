@@ -4,7 +4,7 @@ if ok then
         options = {
             -- Compiled file's destination location
             transparent = true,            -- Disable setting background
-            dim_inactive = true,           -- Non focused panes set to alternative background
+            dim_inactive = false,           -- Non focused panes set to alternative background
         },
     })
 
