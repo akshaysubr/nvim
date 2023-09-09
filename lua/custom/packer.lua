@@ -35,9 +35,9 @@ return packer.startup(function(use)
     use({
         "EdenEast/nightfox.nvim",
         as = 'nightfox',
-        config = function()
-            vim.cmd("colorscheme nordfox")
-        end
+        -- config = function()
+        --     vim.cmd("colorscheme nordfox")
+        -- end
     })
 
     use('nvim-treesitter/nvim-treesitter', { run = ':TSUpdate' })
