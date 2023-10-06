@@ -1,9 +1,21 @@
-local ok, indent = pcall(require, "indent_blankline")
+local ok, ibl = pcall(require, "ibl")
 
 if ok then
-    indent.setup {
-        -- for example, context is off by default, use this to turn it on
-        show_current_context = true,
-        show_current_context_start = true,
+    local highlight = {
+        "ScopeHighlight",
+    }
+
+    local hooks = require "ibl.hooks"
+    -- create the highlight groups in the highlight setup hook, so they are reset
+    -- every time the colorscheme changes
+    hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
+        vim.api.nvim_set_hl(0, "ScopeHighlight", { fg = "#cdcecf" })
+    end)
+    ibl.setup {
+        -- indent = { highlight = highlight },
+        scope = { enabled = true,
+                  show_start = true,
+                  highlight = highlight,
+              },
     }
 end
