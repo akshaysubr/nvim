@@ -5,9 +5,19 @@ if ok then
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
-        ensure_installed = {},
+        ensure_installed = { 'ruff_lsp' },
         handlers = {
             lsp.default_setup,
+            ruff_lsp = function()
+                require('lspconfig').ruff_lsp.setup {
+                    init_options = {
+                        settings = {
+                            -- Any extra CLI arguments for `ruff` go here.
+                            args = {},
+                        }
+                    }
+                }
+            end,
         }
     })
 
@@ -70,4 +80,13 @@ if ok then
     lsp.setup()
 
     -- require('clangd_extensions').setup()
+
+    -- vim.diagnostic.config({
+    --     virtual_text = true,
+    --     signs = true,
+    --     update_in_insert = false,
+    --     underline = true,
+    --     severity_sort = false,
+    --     float = true,
+    -- })
 end
