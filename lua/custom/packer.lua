@@ -105,6 +105,78 @@ return packer.startup(function(use)
         })
     end }
 
+    use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+        require("toggleterm").setup({
+            -- size can be a number or function which is passed the current terminal
+            size = function(term)
+                if term.direction == "horizontal" then
+                    return 20
+                elseif term.direction == "vertical" then
+                    return vim.o.columns * 0.4
+                end
+            end,
+            open_mapping = [[<c-t>]],
+            hide_numbers = true, -- hide the number column in toggleterm buffers
+            direction = 'horizontal',
+            -- This field is only relevant if direction is set to 'float'
+            float_opts = {
+                -- The border key is *almost* the same as 'nvim_open_win'
+                -- see :h nvim_open_win for details on borders however
+                -- the 'curved' border is a custom border type
+                -- not natively supported but implemented in this plugin.
+                border = 'rounded',
+                -- like `size`, width and height can be a number or function which is passed the current terminal
+                winblend = 0,
+                highlights = {
+                    border = "Normal",
+                    background = "Normal",
+                },
+            },
+
+        })
+    end }
+
+    use { 'ojroques/nvim-osc52' }
+
+    use { "stevearc/oil.nvim", config = function()
+        require("oil").setup({
+            columns = {
+                "icon",
+                -- "permissions",
+                -- "size",
+                -- "mtime",
+            },
+            -- Configuration for the floating window in oil.open_float
+            float = {
+                -- Padding around the floating window
+                padding = 2,
+                max_width = 100,
+                max_height = 60,
+                border = "rounded",
+                win_options = {
+                    winblend = 0,
+                },
+                -- This is the config that will be passed to nvim_open_win.
+                -- Change values here to customize the layout
+                override = function(conf)
+                    return conf
+                end,
+            },
+        })
+    end,
+    }
+
+    use { "folke/which-key.nvim", config = function()
+        vim.o.timeout = true
+        vim.o.timeoutlen = 300
+        require("which-key").setup {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        }
+    end
+    }
+
     -- use {
     --     'chipsenkbeil/distant.nvim',
     --     branch = 'v0.3',
