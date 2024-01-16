@@ -74,6 +74,14 @@ return {
             on_attach = on_attach,
         })
 
+        lspconfig.clangd.setup({
+            on_attach = function(client, bufnr)
+                client.server_capabilities.signatureHelpProvider = false
+                on_attach(client, bufnr)
+            end,
+            capabilities = capabilities,
+        })
+
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
