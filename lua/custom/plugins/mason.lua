@@ -34,6 +34,7 @@ return {
                 "ltex",
                 "lua_ls",
                 "pyright",
+                "ruff_lsp",
                 "taplo",
                 "yamlls",
             },

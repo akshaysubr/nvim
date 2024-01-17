@@ -72,6 +72,26 @@ return {
         lspconfig["pyright"].setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            settings = {
+                python = {
+                    analysis = {
+                        autoImportCompletion = true,
+                        autoSearchPaths = true,
+                        diagnosticMode = 'openFilesOnly',
+                        useLibraryCodeForTypes = true,
+                        typeCheckingMode = 'off',
+                        diagnosticSeverityOverrides = {
+                            reportMissingModuleSource = "none",
+                            reportMissingImports = "none",
+                        },
+                    },
+                },
+            }
+        })
+
+        lspconfig["ruff_lsp"].setup({
+            capabilities = capabilities,
+            on_attach = on_attach,
         })
 
         lspconfig.clangd.setup({

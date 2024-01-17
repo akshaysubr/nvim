@@ -10,11 +10,3 @@ export PATH="${HOME}/nvim-linux64/bin:${PATH}"
 mkdir -p ${HOME}/.config && \
 cd ${HOME}/.config && \
 git clone https://github.com/akshaysubr/nvim.git
-
-# Install Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
-
-# Install all packer packages
-${HOME}/nvim-linux64/bin/nvim --headless +"sleep 5" +"autocmd User PackerComplete quitall" +"silent PackerSync" +qa
-# Install treesitter LSPs
-${HOME}/nvim-linux64/bin/nvim --headless +"sleep 5" +"silent TSInstall" +"sleep 5" +qa
