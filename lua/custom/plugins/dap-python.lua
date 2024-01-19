@@ -13,7 +13,8 @@ return {
         -- Install python specific config
         local mason_path = vim.fn.glob(vim.fn.stdpath "data" .. "/mason/")
         local path = mason_path .. "packages/debugpy/venv/bin/python"
-        local dap_python = require('dap-python')
+        -- local path = "/usr/bin/python3.10"
+	local dap_python = require('dap-python')
         dap_python.setup(path) -- path to mason debugpy install
         -- vim.keymap.set('n', '<leader>dpm', dap_python.test_method(), { desc = 'Test python method' })
         -- vim.keymap.set('n', '<leader>dpc', dap_python.test_class(), { desc = 'Test python class' })

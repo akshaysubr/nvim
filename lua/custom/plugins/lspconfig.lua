@@ -3,6 +3,7 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
         "hrsh7th/cmp-nvim-lsp",
+        "aznhe21/actions-preview.nvim",
     },
     config = function()
         -- import lspconfig plugin
@@ -12,6 +13,23 @@ return {
         local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         local keymap = vim.keymap -- for conciseness
+
+        local actions_preview = require("actions-preview")
+        actions_preview.setup({
+            telescope = {
+                sorting_strategy = "ascending",
+                layout_strategy = "vertical",
+                layout_config = {
+                    width = 0.8,
+                    height = 0.9,
+                    prompt_position = "top",
+                    preview_cutoff = 20,
+                    preview_height = function(_, _, max_lines)
+                        return max_lines - 15
+                    end,
+                },
+            },
+        })
 
         local opts = { noremap = true, silent = true }
         local on_attach = function(client, bufnr)
@@ -34,7 +52,8 @@ return {
             keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
 
             opts.desc = "See available code actions"
-            keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+            --keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
+            keymap.set({ "n", "v" }, "<leader>ca", actions_preview.code_actions, opts) -- see available code actions, in visual mode will apply to selection
 
             opts.desc = "Smart rename"
             keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts) -- smart rename
@@ -56,6 +75,10 @@ return {
 
             opts.desc = "Restart LSP"
             keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts) -- mapping to restart lsp if necessary
+
+            keymap.set("n", "<leader>f", function()
+                vim.lsp.buf.format({ async = true, timeout_ms = 5000 })
+            end, { desc = "Format file" })
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
@@ -68,6 +91,16 @@ return {
             vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
         end
 
+        vim.diagnostic.config({
+            virtual_text = {
+                source = false,
+            },
+            float = {
+                source = true,
+            },
+            severity_sort = true,
+        })
+
         -- configure python server
         lspconfig["pyright"].setup({
             capabilities = capabilities,
@@ -77,16 +110,16 @@ return {
                     analysis = {
                         autoImportCompletion = true,
                         autoSearchPaths = true,
-                        diagnosticMode = 'openFilesOnly',
+                        diagnosticMode = "openFilesOnly",
                         useLibraryCodeForTypes = true,
-                        typeCheckingMode = 'off',
+                        typeCheckingMode = "off",
                         diagnosticSeverityOverrides = {
                             reportMissingModuleSource = "none",
                             reportMissingImports = "none",
                         },
                     },
                 },
-            }
+            },
         })
 
         lspconfig["ruff_lsp"].setup({

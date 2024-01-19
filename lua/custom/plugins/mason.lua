@@ -54,6 +54,7 @@ return {
                 "mypy",     -- python type checker
                 "debugpy",  -- python debugger
                 "markdownlint",
+                "jq",
             },
         })
     end,
