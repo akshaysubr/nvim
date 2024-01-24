@@ -17,7 +17,7 @@ fi
 if [ "$(id -u)" -eq 0 ]; then
     source /etc/os-release
     case $ID in
-          ubuntu) apt update && apt install python3.10-venv 
+          ubuntu) apt update && apt install -y python3.10-venv 
               ;;
 
           *) echo "This is an unknown distribution."
