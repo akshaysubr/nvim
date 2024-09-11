@@ -6,15 +6,21 @@ wget https://github.com/neovim/neovim/releases/latest/download/nvim-linux64.tar.
 tar xvfz nvim-linux64.tar.gz
 export PATH="${HOME}/nvim-linux64/bin:${PATH}"
 
-# Setup neovim configs
-mkdir -p ${HOME}/.config && \
-cd ${HOME}/.config && \
-git clone https://github.com/akshaysubr/nvim.git
+if [ ! -d "${HOME}/.config/nvim" ]; then
+    # Setup neovim configs if not already available
+    mkdir -p ${HOME}/.config && \
+    cd ${HOME}/.config && \
+    git clone https://github.com/akshaysubr/nvim.git
+fi
 
-# Install Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# For containers, install venv for Mason LSP installs
+if [ "$(id -u)" -eq 0 ]; then
+    source /etc/os-release
+    case $ID in
+          ubuntu) apt update && apt install -y python3.10-venv 
+              ;;
 
-# Install all packer packages
-${HOME}/nvim-linux64/bin/nvim --headless +"sleep 5" +"autocmd User PackerComplete quitall" +"silent PackerSync" +qa
-# Install treesitter LSPs
-${HOME}/nvim-linux64/bin/nvim --headless +"sleep 5" +"silent TSInstall" +"sleep 5" +qa
+          *) echo "This is an unknown distribution."
+              ;;
+    esac
+fi
