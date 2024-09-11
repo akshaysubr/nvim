@@ -18,7 +18,7 @@ return {
                 "stylua", -- lua formatter
                 "black", -- python formatter
                 -- "isort", -- python linter
-                "ruff", -- python linter
+                -- "ruff", -- python linter
                 "mypy", -- python type checker
                 "markdownlint", -- markdown linter
             },
@@ -40,10 +40,10 @@ return {
                 formatting.black,
                 -- formatting.isort,
                 formatting.clang_format,
-                formatting.jq,
+                -- formatting.jq,
                 formatting.prettier,
                 -- formatting.stylua, -- lua formatter
-                diagnostics.ruff,
+                -- diagnostics.ruff,
                 diagnostics.mypy.with({
                     extra_args = { "--ignore-missing-imports" },
                 }),

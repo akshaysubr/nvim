@@ -106,26 +106,43 @@ return {
             capabilities = capabilities,
             on_attach = on_attach,
             settings = {
+                pyright = {
+                  -- Using Ruff's import organizer
+                  disableOrganizeImports = true,
+                },
                 python = {
                     analysis = {
-                        autoImportCompletion = true,
-                        autoSearchPaths = true,
-                        diagnosticMode = "openFilesOnly",
-                        useLibraryCodeForTypes = true,
-                        typeCheckingMode = "off",
-                        diagnosticSeverityOverrides = {
-                            reportMissingModuleSource = "none",
-                            reportMissingImports = "none",
-                        },
+                      -- Ignore all files for analysis to exclusively use Ruff for linting
+                      ignore = { '*' },
                     },
+                    -- analysis = {
+                    --     autoImportCompletion = true,
+                    --     autoSearchPaths = true,
+                    --     diagnosticMode = "openFilesOnly",
+                    --     useLibraryCodeForTypes = true,
+                    --     typeCheckingMode = "off",
+                    --     diagnosticSeverityOverrides = {
+                    --         reportMissingModuleSource = "none",
+                    --         reportMissingImports = "none",
+                    --     },
+                    -- },
                 },
             },
         })
 
-        lspconfig["ruff_lsp"].setup({
+        lspconfig.ruff.setup({
             capabilities = capabilities,
             on_attach = on_attach,
+            init_options = {
+            settings = {
+              -- Server settings should go here
+            }
+          }
         })
+        -- lspconfig["ruff_lsp"].setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        -- })
 
         lspconfig.clangd.setup({
             on_attach = function(client, bufnr)
