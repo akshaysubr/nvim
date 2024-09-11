@@ -53,7 +53,7 @@ return {
                 "ruff",     -- python linter
                 "mypy",     -- python type checker
                 "debugpy",  -- python debugger
-                "markdownlint",
+                -- "markdownlint",
                 "jq",
             },
         })

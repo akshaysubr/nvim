@@ -20,7 +20,7 @@ return {
                 -- "isort", -- python linter
                 "ruff", -- python linter
                 "mypy", -- python type checker
-                "markdownlint", -- markdown linter
+                -- "markdownlint", -- markdown linter
             },
         })
 
@@ -47,7 +47,7 @@ return {
                 diagnostics.mypy.with({
                     extra_args = { "--ignore-missing-imports" },
                 }),
-                diagnostics.markdownlint,
+                -- diagnostics.markdownlint,
             },
             -- configure format on save
             -- on_attach = function(current_client, bufnr)
