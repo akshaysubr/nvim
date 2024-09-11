@@ -29,23 +29,23 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
 -- Split window
-vim.keymap.set("n", "<leader>ss", "<C-w>s", { silent = true, noremap = true, desc = { "Horizontal split" } })
-vim.keymap.set("n", "<leader>sv", "<C-w>v", { silent = true, noremap = true, desc = { "Vertical split" } })
-vim.keymap.set("n", "<leader>sr", "<C-w>r", { silent = true, noremap = true, desc = { "Swap splits" } })
+vim.keymap.set("n", "<leader>ss", "<C-w>s", { silent = true, noremap = true, desc =  "Horizontal split" } )
+vim.keymap.set("n", "<leader>sv", "<C-w>v", { silent = true, noremap = true, desc =  "Vertical split" } )
+vim.keymap.set("n", "<leader>sr", "<C-w>r", { silent = true, noremap = true, desc =  "Swap splits" } )
 
-vim.keymap.set("n", "<leader>sH", "<C-w>H", { silent = true, noremap = true, desc = { "Move split left" } })
-vim.keymap.set("n", "<leader>sJ", "<C-w>J", { silent = true, noremap = true, desc = { "Move split down" } })
-vim.keymap.set("n", "<leader>sK", "<C-w>K", { silent = true, noremap = true, desc = { "Move split up" } })
-vim.keymap.set("n", "<leader>sL", "<C-w>L", { silent = true, noremap = true, desc = { "Move split right" } })
+vim.keymap.set("n", "<leader>sH", "<C-w>H", { silent = true, noremap = true, desc =  "Move split left" } )
+vim.keymap.set("n", "<leader>sJ", "<C-w>J", { silent = true, noremap = true, desc =  "Move split down" } )
+vim.keymap.set("n", "<leader>sK", "<C-w>K", { silent = true, noremap = true, desc =  "Move split up" } )
+vim.keymap.set("n", "<leader>sL", "<C-w>L", { silent = true, noremap = true, desc =  "Move split right" } )
 
-vim.keymap.set("n", "<leader>s=", "<C-w>=", { silent = true, noremap = true, desc = { "Equalize splits" } })
-vim.keymap.set("n", "<leader>s+", "<C-w>+", { silent = true, noremap = true, desc = { "Increase split height" } })
-vim.keymap.set("n", "<leader>s-", "<C-w>-", { silent = true, noremap = true, desc = { "Decrease split height" } })
-vim.keymap.set("n", "<leader>s>", "<C-w>>", { silent = true, noremap = true, desc = { "Increase split width" } })
-vim.keymap.set("n", "<leader>s<", "<C-w><", { silent = true, noremap = true, desc = { "Decrease split width" } })
+vim.keymap.set("n", "<leader>s=", "<C-w>=", { silent = true, noremap = true, desc =  "Equalize splits" } )
+vim.keymap.set("n", "<leader>s+", "<C-w>+", { silent = true, noremap = true, desc =  "Increase split height" } )
+vim.keymap.set("n", "<leader>s-", "<C-w>-", { silent = true, noremap = true, desc =  "Decrease split height" } )
+vim.keymap.set("n", "<leader>s>", "<C-w>>", { silent = true, noremap = true, desc =  "Increase split width" } )
+vim.keymap.set("n", "<leader>s<", "<C-w><", { silent = true, noremap = true, desc =  "Decrease split width" } )
 
-local n_opts = { silent = true, noremap = true, desc = { "Better window navigation" } }
-local t_opts = { silent = true, desc = { "Terminal mode window navigation" } }
+local n_opts = { silent = true, noremap = true, desc =  "Better window navigation" } 
+local t_opts = { silent = true, desc =  "Terminal mode window navigation" } 
 
 -- Better window navigation
 vim.keymap.set("n", "<C-h>", "<C-w>h", n_opts)
