@@ -105,6 +105,8 @@ return packer.startup(function(use)
         })
     end }
 
+    use {'ojroques/nvim-osc52'}
+
     -- use {
     --     'chipsenkbeil/distant.nvim',
     --     branch = 'v0.3',
