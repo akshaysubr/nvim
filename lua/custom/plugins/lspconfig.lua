@@ -2,7 +2,7 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-        "hrsh7th/cmp-nvim-lsp",
+        --"hrsh7th/cmp-nvim-lsp",
         "aznhe21/actions-preview.nvim",
     },
     config = function()
@@ -10,7 +10,7 @@ return {
         local lspconfig = require("lspconfig")
 
         -- import cmp-nvim-lsp plugin
-        local cmp_nvim_lsp = require("cmp_nvim_lsp")
+        -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
         local keymap = vim.keymap -- for conciseness
 
@@ -82,7 +82,7 @@ return {
         end
 
         -- used to enable autocompletion (assign to every lsp server config)
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        -- local capabilities = cmp_nvim_lsp.default_capabilities()
 
         -- Change the Diagnostic symbols in the sign column (gutter)
         local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
@@ -103,7 +103,7 @@ return {
 
         -- configure python server
         lspconfig["pyright"].setup({
-            capabilities = capabilities,
+            -- capabilities = capabilities,
             on_attach = on_attach,
             settings = {
                 pyright = {
@@ -131,7 +131,7 @@ return {
         })
 
         lspconfig.ruff.setup({
-            capabilities = capabilities,
+            -- capabilities = capabilities,
             on_attach = on_attach,
             init_options = {
             settings = {
@@ -149,17 +149,17 @@ return {
                 client.server_capabilities.signatureHelpProvider = false
                 on_attach(client, bufnr)
             end,
-            capabilities = capabilities,
+            -- capabilities = capabilities,
         })
 
         lspconfig.rust_analyzer.setup({
-            capabilities = capabilities,
+            -- capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure lua server (with special settings)
         lspconfig["lua_ls"].setup({
-            capabilities = capabilities,
+            -- capabilities = capabilities,
             on_attach = on_attach,
             settings = { -- custom settings for lua
                 Lua = {

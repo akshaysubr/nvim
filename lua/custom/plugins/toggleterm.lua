@@ -111,7 +111,8 @@ return {
 
         -- nvidia-smi
         local nvsmi = Terminal:new({
-            cmd = "watch -n1 nvidia-smi",
+            -- cmd = "watch -n1 nvidia-smi",
+            cmd = "uvx nvitop",
             direction = "float",
             float_opts = {
                 border = "rounded",
@@ -119,7 +120,8 @@ return {
                 height = 36,
             },
             start_in_insert = false,
-            hidden = true
+            hidden = true,
+            close_on_exit = false
         })
 
         function _nvsmi_toggle()
