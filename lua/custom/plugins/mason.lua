@@ -34,7 +34,7 @@ return {
                 "ltex",
                 "lua_ls",
                 "pyright",
-                --"ruff_lsp",
+                -- "ruff_lsp",
                 "taplo",
                 "yamlls",
             },
@@ -50,7 +50,7 @@ return {
                 "stylua",   -- lua formatter
                 "isort",    -- python formatter
                 "black",    -- python formatter
-                "ruff",     -- python linter
+                -- "ruff",     -- python linter
                 "mypy",     -- python type checker
                 "debugpy",  -- python debugger
                 -- "markdownlint",

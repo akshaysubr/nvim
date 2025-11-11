@@ -6,8 +6,9 @@ return {
         "aznhe21/actions-preview.nvim",
     },
     config = function()
-        -- import lspconfig plugin
-        local lspconfig = require("lspconfig")
+        -- import lspconfig plug
+        -- local lspconfig = require("lspconfig")
+        -- local lspconfig = vim.lsp.config
 
         -- import cmp-nvim-lsp plugin
         -- local cmp_nvim_lsp = require("cmp_nvim_lsp")
@@ -102,7 +103,8 @@ return {
         })
 
         -- configure python server
-        lspconfig["pyright"].setup({
+        -- lspconfig["pyright"].setup({
+        vim.lsp.config("pyright", {
             -- capabilities = capabilities,
             on_attach = on_attach,
             settings = {
@@ -130,21 +132,24 @@ return {
             },
         })
 
-        lspconfig.ruff.setup({
-            -- capabilities = capabilities,
-            on_attach = on_attach,
-            init_options = {
-            settings = {
-              -- Server settings should go here
-            }
-          }
-        })
+        -- lspconfig.ruff.setup({})
+        vim.lsp.config("ruff", {})
+        -- lspconfig.ruff.setup({
+        --     capabilities = capabilities,
+        --     on_attach = on_attach,
+        --     init_options = {
+        --     settings = {
+        --       -- Server settings should go here
+        --     }
+        --   }
+        -- })
         -- lspconfig["ruff_lsp"].setup({
         --     capabilities = capabilities,
         --     on_attach = on_attach,
         -- })
 
-        lspconfig.clangd.setup({
+        -- lspconfig.clangd.setup({
+        vim.lsp.config("clangd", {
             on_attach = function(client, bufnr)
                 client.server_capabilities.signatureHelpProvider = false
                 on_attach(client, bufnr)
@@ -152,13 +157,14 @@ return {
             -- capabilities = capabilities,
         })
 
-        lspconfig.rust_analyzer.setup({
+        vim.lsp.config("rust_analyzer", {
             -- capabilities = capabilities,
             on_attach = on_attach,
         })
 
         -- configure lua server (with special settings)
-        lspconfig["lua_ls"].setup({
+        -- lspconfig["lua_ls"].setup({
+        vim.lsp.config("lua_ls", {
             -- capabilities = capabilities,
             on_attach = on_attach,
             settings = { -- custom settings for lua

@@ -39,38 +39,40 @@ return {
             },
           },
         },
-        adapters = {
-          -- copilot = function()
-          --   return require('codecompanion.adapters').extend('copilot', {
-          --     schema = {
-          --       model = {
-          --         default = 'claude-3.7-sonnet',
-          --       },
-          --     },
-          --   })
-          -- end,
-          azure_compat = function()
-            return require('codecompanion.adapters').extend('azure_openai', {
-              env = {
-                api_key = oai_api_key,
-                endpoint = oai_url,
-              },
-              schema = {
-                model = {
-                  default = oai_model,
+        http = {
+          adapters = {
+            -- copilot = function()
+            --   return require('codecompanion.adapters').extend('copilot', {
+            --     schema = {
+            --       model = {
+            --         default = 'claude-3.7-sonnet',
+            --       },
+            --     },
+            --   })
+            -- end,
+            azure_compat = function()
+              return require('codecompanion.http.adapters').extend('azure_openai', {
+                env = {
+                  api_key = oai_api_key,
+                  endpoint = oai_url,
                 },
-              },
-            })
-          end,
-        },
-        strategies = {
-          chat = {
-            adapter = adapter,
+                schema = {
+                  model = {
+                    default = oai_model,
+                  },
+                },
+              })
+            end,
           },
-          inline = {
-            adapter = adapter,
+          strategies = {
+            chat = {
+              adapter = adapter,
+            },
+            inline = {
+              adapter = adapter,
+            },
           },
-        },
+        }
       })
       vim.keymap.set('n', '<leader>a', cc.toggle, { silent = true })
       vim.keymap.set('v', '<leader>a', ':CodeCompanionChat Add<CR>')

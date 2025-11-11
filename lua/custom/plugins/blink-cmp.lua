@@ -230,14 +230,24 @@ return {
       },
     }
 
-    -- opts.fuzzy = {
-    --   -- Disabling this matches the behavior of fzf
-    --   use_typo_resistance = false,
-    --   -- Frecency tracks the most recently/frequently used items and boosts the score of the item
-    --   use_frecency = true,
-    --   -- Proximity bonus boosts the score of items matching nearby words
-    --   use_proximity = false,
-    -- }
+    opts.fuzzy = {
+      -- See the prebuilt_binaries section for controlling the download behavior
+      implementation = 'prefer_rust',
+      -- -- Disabling this matches the behavior of fzf
+      -- use_typo_resistance = false,
+      -- -- Frecency tracks the most recently/frequently used items and boosts the score of the item
+      -- use_frecency = true,
+      -- -- Proximity bonus boosts the score of items matching nearby words
+      -- use_proximity = false,
+      prebuilt_binaries = {
+        -- Whether or not to automatically download a prebuilt binary from github. If this is set to `false`,
+        -- you will need to manually build the fuzzy binary dependencies by running `cargo build --release`
+        -- Disabled by default when `fuzzy.implementation = 'lua'`
+        download = true,
+        -- Ignores mismatched version between the built binary and the current git sha, when building locally
+        ignore_version_mismatch = true,
+      }
+    }
 
     opts.snippets = {
       preset = "luasnip", -- Choose LuaSnip as the snippet engine
