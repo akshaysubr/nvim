@@ -19,16 +19,7 @@ return {
     },
     config = function()
       local cc = require('codecompanion')
-      local oai_url = vim.env.OAI_URL
-      local oai_api_key = vim.env.OAI_APIKEY
-      local oai_model = vim.env.OAI_MODEL
 
-      -- If a `~/.workrc` has set these envvars on this machine,
-      -- ensure we use them for LLM access instead of copilot.
-      local adapter = 'copilot'
-      if oai_url and oai_api_key and oai_model then
-        adapter = 'azure_compat'
-      end
       cc.setup({
         display = {
           chat = {
@@ -39,43 +30,42 @@ return {
             },
           },
         },
-        http = {
-          adapters = {
-            -- copilot = function()
-            --   return require('codecompanion.adapters').extend('copilot', {
-            --     schema = {
-            --       model = {
-            --         default = 'claude-3.7-sonnet',
-            --       },
-            --     },
-            --   })
-            -- end,
-            azure_compat = function()
-              return require('codecompanion.http.adapters').extend('azure_openai', {
-                env = {
-                  api_key = oai_api_key,
-                  endpoint = oai_url,
+        adapters = {
+          acp = {
+            opencode = function()
+              return require("codecompanion.adapters").extend("opencode", {
+                defaults = {
+                  model = "github-copilot/claude-opus-4.5",
                 },
+              })
+            end,
+          },
+          http = {
+            copilot = function()
+              return require('codecompanion.adapters').extend('copilot', {
                 schema = {
                   model = {
-                    default = oai_model,
+                    default = 'claude-sonnet-4',
                   },
                 },
               })
             end,
           },
-          strategies = {
-            chat = {
-              adapter = adapter,
-            },
-            inline = {
-              adapter = adapter,
+        },
+        interactions = {
+          chat = {
+            adapter = "opencode",
+          },
+          inline = {
+            adapter = {
+              name = "copilot",
+              model = "claude-sonnet-4",
             },
           },
-        }
+        },
       })
-      vim.keymap.set('n', '<leader>a', cc.toggle, { silent = true })
-      vim.keymap.set('v', '<leader>a', ':CodeCompanionChat Add<CR>')
+      vim.keymap.set('n', '<leader>a', '<cmd>CodeCompanionChat Toggle<CR>', { silent = true })
+      vim.keymap.set('v', '<leader>a', '<cmd>CodeCompanionChat Add<CR>', { silent = true })
     end,
   },
 }

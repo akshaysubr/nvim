@@ -24,7 +24,12 @@ return {
   dependencies = {
     "moyiz/blink-emoji.nvim",
     "Kaiser-Yang/blink-cmp-dictionary",
-    "L3MON4D3/LuaSnip",
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+	  -- install jsregexp (optional!).
+	  build = "make install_jsregexp"
+    },
   },
   opts = function(_, opts)
     -- I noticed that telescope was extremeley slow and taking too long to open,
